@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySolutions - CBSE NCERT Solutions Classes 1-12</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .search-bar {
+            display: flex;
+            width: 40%;
+        }
+
+        .search-bar input {
+            padding: 0.7rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-weight: 500;
+        }
+
+        .auth-buttons a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            padding-top: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--light);
+        }
+
+        .dropdown {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        nav ul li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            color: var(--dark);
+            padding: 0.8rem 1rem;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Ad Banner */
+        .ad-banner {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.85), rgba(52, 152, 219, 0.85)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .content {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+        }
+
+        /* Classes Section */
+        .classes-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .class-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-header {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 1.2rem;
+        }
+
+        .class-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .class-body {
+            padding: 1.2rem;
+        }
+
+        .class-body ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .class-body ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .class-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .class-body ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .class-body ul li a:hover {
+            color: var(--secondary);
+        }
+
+        /* Resources Section */
+        .resources-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .resources-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            border-radius: 4px 4px 0 0;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .resource-tab.active {
+            background-color: white;
+            border-color: #ddd;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            color: var(--primary);
+        }
+
+        .resource-tab:hover:not(.active) {
+            background-color: #e9e9e9;
+        }
+
+        .resources-content {
+            display: none;
+        }
+
+        .resources-content.active {
+            display: block;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar-widget {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-links li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .sidebar-links li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-links li a:hover {
+            color: var(--secondary);
+        }
+
+        .ad-square {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Quick Stats */
+        .stats-section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: var(--light);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+                order: 3;
+            }
+            
+            .auth-buttons {
+                order: 2;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                display: none;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .classes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .resources-tabs {
+                flex-direction: column;
+            }
+            
+            .resource-tab {
+                margin-right: 0;
+                border-radius: 4px;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Study<span>Solutions</span></h1>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for solutions, books, or topics...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="auth-buttons">
+                    <a href="#"><i class="fas fa-user"></i> Login</a>
+                    <a href="#"><i class="fas fa-user-plus"></i> Register</a>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-book"></i> NCERT Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Class 1-5 Solutions</a>
+                            <a href="#">Class 6-8 Solutions</a>
+                            <a href="#">Class 9-10 Solutions</a>
+                            <a href="#">Class 11-12 Solutions</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-calculator"></i> RD Sharma <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Class 6 Solutions</a>
+                            <a href="#">Class 7 Solutions</a>
+                            <a href="#">Class 8 Solutions</a>
+                            <a href="#">Class 9 Solutions</a>
+                            <a href="#">Class 10 Solutions</a>
+                            <a href="#">Class 11 Solutions</a>
+                            <a href="#">Class 12 Solutions</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-square-root-alt"></i> RS Aggarwal <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown">
+                            <a href="#">Class 6 Solutions</a>
+                            <a href="#">Class 7 Solutions</a>
+                            <a href="#">Class 8 Solutions</a>
+                            <a href="#">Class 9 Solutions</a>
+                            <a href="#">Class 10 Solutions</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-file-alt"></i> Sample Papers</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-video"></i> Video Lessons</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fas fa-question-circle"></i> MCQ Tests</a>
+                    </li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            📚 Free NCERT Solutions for Classes 1 to 12 - Updated for 2024 Academic Year
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Comprehensive CBSE NCERT Solutions for Classes 1 to 12</h2>
+            <p>Access detailed solutions for NCERT textbooks, RD Sharma, and RS Aggarwal with step-by-step explanations, sample papers, and video lessons.</p>
+            <a href="#classes" class="btn">Explore Classes</a>
+            <a href="#resources" class="btn btn-secondary">View Solutions</a>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">12,500+</div>
+                    <div class="stat-label">NCERT Solutions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4,200+</div>
+                    <div class="stat-label">RD Sharma Solutions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,800+</div>
+                    <div class="stat-label">RS Aggarwal Solutions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">950+</div>
+                    <div class="stat-label">Sample Papers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <div class="content">
+                <!-- Classes Section -->
+                <section class="classes-section" id="classes">
+                    <h2 class="section-title">Select Your Class</h2>
+                    <div class="classes-grid">
+                        <!-- Class 1 to 5 -->
+                        <div class="class-card">
+                            <div class="class-header">
+                                <h3>Classes 1-5</h3>
+                            </div>
+                            <div class="class-body">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-book"></i> NCERT Solutions</a></li>
+                                    <li><a href="#"><i class="fas fa-puzzle-piece"></i> Worksheets</a></li>
+                                    <li><a href="#"><i class="fas fa-video"></i> Video Lessons</a></li>
+                                    <li><a href="#"><i class="fas fa-gamepad"></i> Learning Games</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Class 6 to 8 -->
+                        <div class="class-card">
+                            <div class="class-header">
+                                <h3>Classes 6-8</h3>
+                            </div>
+                            <div class="class-body">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-book"></i> NCERT Solutions</a></li>
+                                    <li><a href="#"><i class="fas fa-calculator"></i> RD Sharma</a></li>
+                                    <li><a href="#"><i class="fas fa-square-root-alt"></i> RS Aggarwal</a></li>
+                                    <li><a href="#"><i class="fas fa-video"></i> Video Lessons</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Class 9 to 10 -->
+                        <div class="class-card">
+                            <div class="class-header">
+                                <h3>Classes 9-10</h3>
+                            </div>
+                            <div class="class-body">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-book"></i> NCERT Solutions</a></li>
+                                    <li><a href="#"><i class="fas fa-calculator"></i> RD Sharma</a></li>
+                                    <li><a href="#"><i class="fas fa-square-root-alt"></i> RS Aggarwal</a></li>
+                                    <li><a href="#"><i class="fas fa-file-alt"></i> Sample Papers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Class 11 to 12 -->
+                        <div class="class-card">
+                            <div class="class-header">
+                                <h3>Classes 11-12</h3>
+                            </div>
+                            <div class="class-body">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-book"></i> NCERT Solutions</a></li>
+                                    <li><a href="#"><i class="fas fa-calculator"></i> RD Sharma</a></li>
+                                    <li><a href="#"><i class="fas fa-file-alt"></i> Sample Papers</a></li>
+                                    <li><a href="#"><i class="fas fa-chart-line"></i> Important Questions</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resources Section -->
+                <section class="resources-section" id="resources">
+                    <h2 class="section-title">Study Resources</h2>
+                    <div class="resources-tabs">
+                        <div class="resource-tab active" data-tab="ncert">NCERT Solutions</div>
+                        <div class="resource-tab" data-tab="rdsharma">RD Sharma</div>
+                        <div class="resource-tab" data-tab="rsaggarwal">RS Aggarwal</div>
+                        <div class="resource-tab" data-tab="sample">Sample Papers</div>
+                    </div>
+
+                    <div class="resources-content active" id="ncert-content">
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <h3>Class 10 NCERT Solutions</h3>
+                                <p>Mathematics, Science, Social Science, English, Hindi</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <h3>Class 9 NCERT Solutions</h3>
+                                <p>Mathematics, Science, Social Science, English, Hindi</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-book-reader"></i>
+                                </div>
+                                <h3>Class 8 NCERT Solutions</h3>
+                                <p>Mathematics, Science, Social Science, English, Hindi</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resources-content" id="rdsharma-content">
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h3>RD Sharma Class 10</h3>
+                                <p>Complete solutions with step-by-step explanations</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-square-root-alt"></i>
+                                </div>
+                                <h3>RD Sharma Class 9</h3>
+                                <p>Detailed solutions for all chapters</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <h3>RD Sharma Class 8</h3>
+                                <p>Easy to understand solutions for all problems</p>
+                                <a href="#" class="btn" style="margin-top: 15px;">View Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="sidebar">
+                <!-- Ad Space -->
+                <div class="ad-square">
+                    Advertisement Space <br> 300x250
+                </div>
+
+                <!-- Popular Resources -->
+                <div class="sidebar-widget">
+                    <h3>Popular Resources</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#"><i class="fas fa-download"></i> CBSE Sample Papers 2024</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> NCERT Solutions Class 10 Maths</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> RD Sharma Class 12 Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> RS Aggarwal Class 9 Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> Science Practical Videos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Latest Updates -->
+                <div class="sidebar-widget">
+                    <h3>Latest Updates</h3>
+                    <ul class="sidebar-links">
+                        <li><a href="#"><i class="fas fa-bell"></i> New NCERT Solutions Added</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Updated RD Sharma Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Board Exam Preparation Tips</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> New Sample Papers Available</a></li>
+                    </ul>
+                </div>
+
+                <!-- Another Ad Space -->
+                <div class="ad-square">
+                    Advertisement Space <br> 300x250
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudySolutions</h3>
+                    <p>Your one-stop destination for comprehensive CBSE NCERT textbook solutions for classes 1 to 12, RD Sharma, and RS Aggarwal solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">NCERT Solutions</a></li>
+                        <li><a href="#">RD Sharma Solutions</a></li>
+                        <li><a href="#">RS Aggarwal Solutions</a></li>
+                        <li><a href="#">Sample Papers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Classes</h3>
+                    <ul>
+                        <li><a href="#">Class 1-5 Solutions</a></li>
+                        <li><a href="#">Class 6 Solutions</a></li>
+                        <li><a href="#">Class 7 Solutions</a></li>
+                        <li><a href="#">Class 8 Solutions</a></li>
+                        <li><a href="#">Class 9 Solutions</a></li>
+                        <li><a href="#">Class 10 Solutions</a></li>
+                        <li><a href="#">Class 11 Solutions</a></li>
+                        <li><a href="#">Class 12 Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@studysolutions.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StudySolutions. All rights reserved. | Designed for CBSE Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Resource Tabs
+        const resourceTabs = document.querySelectorAll('.resource-tab');
+        const resourceContents = document.querySelectorAll('.resources-content');
+
+        resourceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                resourceTabs.forEach(t => t.classList.remove('active'));
+                resourceContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

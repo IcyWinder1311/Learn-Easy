@@ -288,6 +288,40 @@
             text-decoration: underline;
         }
 
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -432,6 +466,17 @@
                         <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
                     </div>
                     <button type="submit" class="btn">Sign In</button>
+                    
+                    <!-- Loading animation -->
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Logging you in...</p>
+                    </div>
+                    
+                    <!-- Success message -->
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> Login successful! Redirecting to home page...
+                    </div>
                 </form>
 
                 <div class="login-divider">
@@ -448,7 +493,7 @@
                 </div>
 
                 <div class="signup-link">
-                    Don't have an account? <a href="Register.html">Sign up here</a>
+                    Don't have an account? <a href="register.html">Sign up here</a>
                 </div>
             </div>
         </div>
@@ -516,6 +561,8 @@
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
             
             // Simple validation
             if (!email || !password) {
@@ -523,12 +570,25 @@
                 return;
             }
             
+            // Show loading animation
+            loading.style.display = 'block';
+            
             // In a real application, you would send this data to a server
             console.log('Login attempt with:', { email, password });
             
-            // Simulate successful login
-            alert('Login successful! Redirecting...');
-            // window.location.href = 'dashboard.html';
+            // Simulate API call delay
+            setTimeout(() => {
+                // Hide loading animation
+                loading.style.display = 'none';
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Redirect to home page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 1500);
         });
     </script>
 </body>

@@ -364,6 +364,40 @@
             text-decoration: underline;
         }
 
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark);
@@ -510,6 +544,10 @@
                         <label for="class">Your Class</label>
                         <div class="class-selection">
                             <div class="class-option">
+                                <input type="radio" id="class8" name="class" value="8">
+                                <label for="class 8">Class 8</label>
+                            </div>
+                            <div class="class-option">
                                 <input type="radio" id="class9" name="class" value="9" required>
                                 <label for="class9">Class 9</label>
                             </div>
@@ -557,10 +595,21 @@
                     
                     <div class="terms">
                         <input type="checkbox" id="terms" required>
-                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">privacy-policy.html</a></label>
                     </div>
                     
                     <button type="submit" class="btn">Create Account</button>
+                    
+                    <!-- Loading animation -->
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Creating your account...</p>
+                    </div>
+                    
+                    <!-- Success message -->
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i> Account created successfully! Redirecting to login page...
+                    </div>
                 </form>
 
                 <div class="register-divider">
@@ -731,6 +780,8 @@
             const confirmPassword = document.getElementById('confirmPassword').value;
             const classSelected = document.querySelector('input[name="class"]:checked');
             const terms = document.getElementById('terms').checked;
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
             
             // Validation
             if (!firstName || !lastName || !email || !password || !confirmPassword || !classSelected || !terms) {
@@ -748,6 +799,9 @@
                 return;
             }
             
+            // Show loading animation
+            loading.style.display = 'block';
+            
             // In a real application, you would send this data to a server
             console.log('Registration attempt with:', { 
                 firstName, 
@@ -756,9 +810,19 @@
                 class: classSelected.value 
             });
             
-            // Simulate successful registration
-            alert('Account created successfully! Redirecting to login...');
-            // window.location.href = 'login.html';
+            // Simulate API call delay
+            setTimeout(() => {
+                // Hide loading animation
+                loading.style.display = 'none';
+                
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Redirect to login page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'Login.html';
+                }, 2000);
+            }, 1500);
         });
     </script>
 </body>

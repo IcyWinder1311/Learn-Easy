@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - StudySolutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --gray: #64748b;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        /* Policy Content */
+        .policy-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .policy-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .last-updated {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .policy-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-section h2 i {
+            color: var(--secondary);
+        }
+
+        .policy-section p {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .policy-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-section li {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .highlight-box {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            margin: 1.5rem 0;
+        }
+
+        .contact-info {
+            background-color: #e8f4fd;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .policy-content {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .policy-header h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .toc h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Study<span>Solutions</span></h1>
+                </div>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Policy Content -->
+    <div class="container">
+        <div class="policy-content">
+            <div class="policy-header">
+                <h1>Privacy Policy</h1>
+                <p>Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i> Last updated: December 1, 2023
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                <ul>
+                    <li><a href="#information-collection">1. Information We Collect</a></li>
+                    <li><a href="#information-use">2. How We Use Your Information</a></li>
+                    <li><a href="#information-sharing">3. Information Sharing</a></li>
+                    <li><a href="#data-security">4. Data Security</a></li>
+                    <li><a href="#cookies">5. Cookies and Tracking</a></li>
+                    <li><a href="#user-rights">6. Your Rights</a></li>
+                    <li><a href="#children-privacy">7. Children's Privacy</a></li>
+                    <li><a href="#policy-changes">8. Policy Changes</a></li>
+                    <li><a href="#contact">9. Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="policy-section" id="information-collection">
+                <h2><i class="fas fa-database"></i> 1. Information We Collect</h2>
+                <p>We collect information to provide better services to our users. The types of information we collect include:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> Name, email address, phone number when you register</li>
+                    <li><strong>Academic Information:</strong> Class, subjects, educational preferences</li>
+                    <li><strong>Usage Data:</strong> How you interact with our platform, pages visited, features used</li>
+                    <li><strong>Technical Information:</strong> IP address, browser type, device information</li>
+                    <li><strong>Payment Information:</strong> If you purchase premium services (processed securely by payment processors)</li>
+                </ul>
+            </div>
+
+            <div class="policy-section" id="information-use">
+                <h2><i class="fas fa-cogs"></i> 2. How We Use Your Information</h2>
+                <p>We use the information we collect for the following purposes:</p>
+                <ul>
+                    <li>Provide and maintain our educational services</li>
+                    <li>Personalize your learning experience</li>
+                    <li>Process transactions and send related information</li>
+                    <li>Send administrative messages and updates</li>
+                    <li>Improve our platform and develop new features</li>
+                    <li>Monitor and analyze usage patterns</li>
+                    <li>Prevent fraud and enhance security</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+            </div>
+
+            <div class="policy-section" id="information-sharing">
+                <h2><i class="fas fa-share-alt"></i> 3. Information Sharing</h2>
+                <p>We do not sell your personal information. We may share information in the following circumstances:</p>
+                <ul>
+                    <li><strong>Service Providers:</strong> With trusted partners who assist in operating our platform</li>
+                    <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
+                    <li><strong>Business Transfers:</strong> In connection with a merger or acquisition</li>
+                    <li><strong>With Your Consent:</strong> When you explicitly agree to share information</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h4><i class="fas fa-shield-alt"></i> Data Protection</h4>
+                    <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                </div>
+            </div>
+
+            <div class="policy-section" id="data-security">
+                <h2><i class="fas fa-lock"></i> 4. Data Security</h2>
+                <p>We take reasonable measures to protect your information:</p>
+                <ul>
+                    <li>Encryption of data in transit and at rest</li>
+                    <li>Regular security assessments and updates</li>
+                    <li>Access controls and authentication procedures</li>
+                    <li>Secure data storage with reputable cloud providers</li>
+                    <li>Regular backups and disaster recovery plans</li>
+                </ul>
+            </div>
+
+            <div class="policy-section" id="cookies">
+                <h2><i class="fas fa-cookie"></i> 5. Cookies and Tracking</h2>
+                <p>We use cookies and similar technologies to:</p>
+                <ul>
+                    <li>Remember your preferences and settings</li>
+                    <li>Analyze how you use our platform</li>
+                    <li>Personalize content and advertisements</li>
+                    <li>Provide social media features</li>
+                </ul>
+                <p>You can control cookies through your browser settings. However, disabling cookies may affect your experience.</p>
+            </div>
+
+            <div class="policy-section" id="user-rights">
+                <h2><i class="fas fa-user-check"></i> 6. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access and receive a copy of your personal data</li>
+                    <li>Correct inaccurate or incomplete information</li>
+                    <li>Delete your personal data</li>
+                    <li>Restrict or object to processing of your data</li>
+                    <li>Data portability</li>
+                    <li>Withdraw consent at any time</li>
+                </ul>
+                <p>To exercise these rights, please contact us using the information below.</p>
+            </div>
+
+            <div class="policy-section" id="children-privacy">
+                <h2><i class="fas fa-child"></i> 7. Children's Privacy</h2>
+                <p>Our services are designed for students of all ages, including children under 13. We comply with COPPA (Children's Online Privacy Protection Act) and other applicable laws:</p>
+                <ul>
+                    <li>We obtain verifiable parental consent before collecting personal information from children under 13</li>
+                    <li>Parents can review, delete, or restrict collection of their child's information</li>
+                    <li>We do not condition a child's participation on disclosing more personal information than necessary</li>
+                </ul>
+            </div>
+
+            <div class="policy-section" id="policy-changes">
+                <h2><i class="fas fa-sync-alt"></i> 8. Policy Changes</h2>
+                <p>We may update this privacy policy from time to time. We will notify you of any changes by:</p>
+                <ul>
+                    <li>Posting the new policy on this page</li>
+                    <li>Updating the "Last updated" date</li>
+                    <li>Sending email notifications for significant changes</li>
+                </ul>
+                <p>We encourage you to review this policy periodically.</p>
+            </div>
+
+            <div class="policy-section" id="contact">
+                <h2><i class="fas fa-envelope"></i> 9. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                
+                <div class="contact-info">
+                    <h3>StudySolutions Privacy Team</h3>
+                    <p><strong>Email:</strong> privacy@studysolutions.com</p>
+                    <p><strong>Address:</strong> 123 Education Street, Learning City, LC 12345</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p>We typically respond to privacy-related inquiries within 2-3 business days.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudySolutions</h3>
+                    <p>Your one-stop destination for comprehensive CBSE NCERT textbook solutions for classes 1 to 12.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">NCERT Solutions</a></li>
+                        <li><a href="#">RD Sharma Solutions</a></li>
+                        <li><a href="#">RS Aggarwal Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help & Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StudySolutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

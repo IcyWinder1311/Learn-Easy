@@ -1,1 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - StudySolutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --gray: #64748b;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        /* Terms Content */
+        .terms-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .terms-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .terms-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .last-updated {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .terms-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .terms-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terms-section h2 i {
+            color: var(--secondary);
+        }
+
+        .terms-section p {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .terms-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-section li {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background-color: #e8f4fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            margin: 1.5rem 0;
+        }
+
+        .acceptance-section {
+            background-color: #d1ecf1;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terms-content {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .terms-header h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Table of Contents */
+        .toc {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .toc h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Study<span>Solutions</span></h1>
+                </div>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terms Content -->
+    <div class="container">
+        <div class="terms-content">
+            <div class="terms-header">
+                <h1>Terms of Service</h1>
+                <p>Please read these terms carefully before using our services</p>
+                <div class="last-updated">
+                    <i class="fas fa-calendar-alt"></i> Last updated: January, 2025
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                <ul>
+                    <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                    <li><a href="#services">2. Services Description</a></li>
+                    <li><a href="#registration">3. Registration and Accounts</a></li>
+                    <li><a href="#user-conduct">4. User Conduct</a></li>
+                    <li><a href="#content">5. Content and Intellectual Property</a></li>
+                    <li><a href="#payments">6. Payments and Subscriptions</a></li>
+                    <li><a href="#termination">7. Termination</a></li>
+                    <li><a href="#disclaimer">8. Disclaimer of Warranties</a></li>
+                    <li><a href="#limitation">9. Limitation of Liability</a></li>
+                    <li><a href="#governing-law">10. Governing Law</a></li>
+                    <li><a href="#changes">11. Changes to Terms</a></li>
+                    <li><a href="#contact">12. Contact Information</a></li>
+                </ul>
+            </div>
+
+            <div class="terms-section" id="acceptance">
+                <h2><i class="fas fa-check-circle"></i> 1. Acceptance of Terms</h2>
+                <p>By accessing or using StudySolutions ("the Platform"), you agree to be bound by these Terms of Service and our Privacy Policy. If you disagree with any part of these terms, you may not access our services.</p>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Important Notice</h4>
+                    <p>These terms contain important information about your legal rights, remedies, and obligations. By using our platform, you acknowledge that you have read, understood, and agree to be bound by these terms.</p>
+                </div>
+            </div>
+
+            <div class="terms-section" id="services">
+                <h2><i class="fas fa-graduation-cap"></i> 2. Services Description</h2>
+                <p>StudySolutions provides educational resources including:</p>
+                <ul>
+                    <li>NCERT textbook solutions for classes 1-12</li>
+                    <li>RD Sharma mathematics solutions</li>
+                    <li>RS Aggarwal mathematics solutions</li>
+                    <li>Sample papers and practice tests</li>
+                    <li>Video lessons and tutorials</li>
+                    <li>Study materials and guides</li>
+                </ul>
+                <p>We reserve the right to modify, suspend, or discontinue any part of our services at any time.</p>
+            </div>
+
+            <div class="terms-section" id="registration">
+                <h2><i class="fas fa-user-plus"></i> 3. Registration and Accounts</h2>
+                <p>To access certain features, you must register for an account. You agree to:</p>
+                <ul>
+                    <li>Provide accurate and complete information</li>
+                    <li>Maintain the security of your password</li>
+                    <li>Accept responsibility for all activities under your account</li>
+                    <li>Notify us immediately of any unauthorized use</li>
+                    <li>Be at least 13 years old, or have parental consent if under 13</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h4><i class="fas fa-shield-alt"></i> Account Security</h4>
+                    <p>You are responsible for safeguarding your account credentials. StudySolutions cannot and will not be liable for any loss or damage arising from your failure to comply with this security obligation.</p>
+                </div>
+            </div>
+
+            <div class="terms-section" id="user-conduct">
+                <h2><i class="fas fa-users"></i> 4. User Conduct</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use the platform for any illegal purpose</li>
+                    <li>Violate any laws or regulations</li>
+                    <li>Infringe upon intellectual property rights</li>
+                    <li>Harass, abuse, or harm others</li>
+                    <li>Upload viruses or malicious code</li>
+                    <li>Attempt to gain unauthorized access</li>
+                    <li>Interfere with the platform's operation</li>
+                    <li>Use automated systems to access the platform</li>
+                    <li>Share your account with others</li>
+                </ul>
+            </div>
+
+            <div class="terms-section" id="content">
+                <h2><i class="fas fa-copyright"></i> 5. Content and Intellectual Property</h2>
+                <p><strong>Our Content:</strong> All educational content, solutions, and materials provided on StudySolutions are protected by copyright and other intellectual property laws. You may use them for personal, non-commercial educational purposes only.</p>
+                
+                <p><strong>Your Content:</strong> By submitting content to us, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and display that content.</p>
+                
+                <p><strong>Prohibited Uses:</strong> You may not:</p>
+                <ul>
+                    <li>Copy, distribute, or sell our content</li>
+                    <li>Use our content for commercial purposes</li>
+                    <li>Remove copyright notices</li>
+                    <li>Create derivative works without permission</li>
+                </ul>
+            </div>
+
+            <div class="terms-section" id="payments">
+                <h2><i class="fas fa-credit-card"></i> 6. Payments and Subscriptions</h2>
+                <p>Some features may require payment:</p>
+                <ul>
+                    <li>Prices are stated in your local currency</li>
+                    <li>Payments are processed by secure third-party providers</li>
+                    <li>Subscriptions automatically renew unless canceled</li>
+                    <li>Refunds are provided according to our refund policy</li>
+                    <li>We reserve the right to change prices with notice</li>
+                </ul>
+            </div>
+
+            <div class="terms-section" id="termination">
+                <h2><i class="fas fa-ban"></i> 7. Termination</h2>
+                <p>We may terminate or suspend your account immediately, without prior notice, for conduct that we believe:</p>
+                <ul>
+                    <li>Violates these Terms of Service</li>
+                    <li>Creates risk or possible legal exposure for us</li>
+                    <li>Is harmful to other users</li>
+                    <li>Is the subject of law enforcement requests</li>
+                </ul>
+                <p>You may terminate your account at any time by contacting us.</p>
+            </div>
+
+            <div class="terms-section" id="disclaimer">
+                <h2><i class="fas fa-exclamation-circle"></i> 8. Disclaimer of Warranties</h2>
+                <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED.</p>
+                
+                <p>We do not warrant that:</p>
+                <ul>
+                    <li>The service will meet your requirements</li>
+                    <li>The service will be uninterrupted or error-free</li>
+                    <li>The results from using the service will be accurate or reliable</li>
+                    <li>The quality of any products, services, or information will meet your expectations</li>
+                </ul>
+            </div>
+
+            <div class="terms-section" id="limitation">
+                <h2><i class="fas fa-balance-scale"></i> 9. Limitation of Liability</h2>
+                <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL STUDYSOLUTIONS, ITS OFFICERS, DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.</p>
+            </div>
+
+            <div class="terms-section" id="governing-law">
+                <h2><i class="fas fa-gavel"></i> 10. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law provisions.</p>
+                <p>Any disputes arising under these Terms shall be resolved in the courts located in New Delhi, India.</p>
+            </div>
+
+            <div class="terms-section" id="changes">
+                <h2><i class="fas fa-sync-alt"></i> 11. Changes to Terms</h2>
+                <p>We reserve the right to modify these terms at any time. We will notify users of material changes by:</p>
+                <ul>
+                    <li>Posting the revised terms on this page</li>
+                    <li>Sending email notifications</li>
+                    <li>Displaying prominent notices on our platform</li>
+                </ul>
+                <p>Continued use of our services after changes constitutes acceptance of the new terms.</p>
+            </div>
+
+            <div class="terms-section" id="contact">
+                <h2><i class="fas fa-envelope"></i> 12. Contact Information</h2>
+                <p>If you have any questions about these Terms of Service, please contact us:</p>
+                
+                <div class="info-box">
+                    <h3>StudySolutions Legal Team</h3>
+                    <p><strong>Email:</strong> echoworks1311@gmail.com</p>
+                    <p><strong>Address:</strong> 123 Education Street, Learning City, LC 12345</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                </div>
+            </div>
+
+            <div class="acceptance-section">
+                <h3><i class="fas fa-handshake"></i> Agreement</h3>
+                <p>By using StudySolutions, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+                <p><strong>Last updated: January 1, 2025</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudySolutions</h3>
+                    <p>Your one-stop destination for comprehensive CBSE NCERT textbook solutions for classes 1 to 12.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">NCERT Solutions</a></li>
+                        <li><a href="#">RD Sharma Solutions</a></li>
+                        <li><a href="#">RS Aggarwal Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help & Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 StudySolutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for table of contents links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

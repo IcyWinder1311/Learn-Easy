@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Doubt Solver - StudySolutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --ai-color: #9b59b6;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(52, 152, 219, 0.9)), url('https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Main Content */
+        .doubt-solver-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .doubt-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .doubt-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Input Section */
+        .input-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .input-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .input-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: #777;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .subject-select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 3rem;
+            color: #bbb;
+            margin-bottom: 1rem;
+        }
+
+        .upload-area p {
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-area span {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        #imagePreview {
+            display: none;
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Output Section */
+        .output-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+
+        .output-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .ai-response {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--ai-color);
+            margin-bottom: 2rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ai-response.empty {
+            text-align: center;
+            color: #888;
+        }
+
+        .ai-response.empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .ai-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--ai-color), #8e44ad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .ai-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .ai-badge {
+            background-color: var(--ai-color);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .response-content {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .response-content h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .response-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .response-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Recent Questions */
+        .recent-questions {
+            margin-top: 2rem;
+        }
+
+        .recent-questions h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .question-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .question-item {
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .question-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .input-tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Study<span>Solutions</span></h1>
+                </div>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>AI Doubt Solver</h2>
+            <p>Get instant answers to your academic questions with our advanced AI assistant</p>
+        </div>
+    </section>
+
+    <!-- Doubt Solver Section -->
+    <section class="doubt-solver-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ask Your Doubts</h2>
+                <p>Type your question or upload an image - get detailed explanations instantly</p>
+            </div>
+
+            <div class="doubt-container">
+                <!-- Input Section -->
+                <div class="input-section">
+                    <h3>Ask a Question</h3>
+                    
+                    <div class="input-tabs">
+                        <button class="tab active" data-tab="text">Text Question</button>
+                        <button class="tab" data-tab="image">Upload Image</button>
+                    </div>
+                    
+                    <!-- Text Question Tab -->
+                    <div class="tab-content active" id="textTab">
+                        <form id="textQuestionForm">
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" class="subject-select" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="chemistry">Chemistry</option>
+                                    <option value="biology">Biology</option>
+                                    <option value="english">English</option>
+                                    <option value="computer">Computer Science</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="questionText">Your Question</label>
+                                <textarea id="questionText" class="form-control" placeholder="Type your question here in detail..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-full">
+                                <i class="fas fa-robot"></i> Ask AI Assistant
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Image Upload Tab -->
+                    <div class="tab-content" id="imageTab">
+                        <form id="imageQuestionForm">
+                            <div class="form-group">
+                                <label for="imageSubject">Subject</label>
+                                <select id="imageSubject" class="subject-select" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="chemistry">Chemistry</option>
+                                    <option value="biology">Biology</option>
+                                    <option value="english">English</option>
+                                    <option value="computer">Computer Science</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Upload Question Image</label>
+                                <div class="upload-area" id="uploadArea">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop your image here</p>
+                                    <span>or click to browse</span>
+                                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                                </div>
+                                <img id="imagePreview" alt="Question Image Preview">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-full">
+                                <i class="fas fa-robot"></i> Analyze Image & Answer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="output-section">
+                    <h3>AI Response</h3>
+                    
+                    <div class="ai-response empty" id="aiResponse">
+                        <i class="fas fa-robot"></i>
+                        <p>Your answer will appear here after you ask a question</p>
+                    </div>
+                    
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>AI is analyzing your question...</p>
+                    </div>
+                    
+                    <div class="recent-questions">
+                        <h4>Recent Questions</h4>
+                        <div class="question-list" id="questionList">
+                            <div class="question-item">
+                                <div class="question-text">How to solve quadratic equations using the quadratic formula?</div>
+                                <div class="question-meta">
+                                    <span>Mathematics</span>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-text">What is Newton's third law of motion with examples?</div>
+                                <div class="question-meta">
+                                    <span>Physics</span>
+                                    <span>5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="question-item">
+                                <div class="question-text">Explain the process of photosynthesis in plants.</div>
+                                <div class="question-meta">
+                                    <span>Biology</span>
+                                    <span>1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudySolutions</h3>
+                    <p>Your one-stop destination for comprehensive CBSE NCERT textbook solutions for classes 1 to 12.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html">NCERT Solutions</a></li>
+                        <li><a href="index.html">RD Sharma Solutions</a></li>
+                        <li><a href="index.html">RS Aggarwal Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help & Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StudySolutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const textQuestionForm = document.getElementById('textQuestionForm');
+        const imageQuestionForm = document.getElementById('imageQuestionForm');
+        const aiResponse = document.getElementById('aiResponse');
+        const loading = document.getElementById('loading');
+        const uploadArea = document.getElementById('uploadArea');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreview = document.getElementById('imagePreview');
+        const questionList = document.getElementById('questionList');
+
+        // Tab switching functionality
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}Tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Image upload functionality
+        uploadArea.addEventListener('click', () => {
+            imageUpload.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = var('--secondary');
+            uploadArea.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ddd';
+            uploadArea.style.backgroundColor = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ddd';
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                handleImageUpload(e.dataTransfer.files[0]);
+            }
+        });
+
+        imageUpload.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleImageUpload(e.target.files[0]);
+            }
+        });
+
+        function handleImageUpload(file) {
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please upload a valid image file.');
+            }
+        }
+
+        // Text question form submission
+        textQuestionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const subject = document.getElementById('subject').value;
+            const questionText = document.getElementById('questionText').value;
+            
+            if (!subject || !questionText) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            processQuestion(subject, questionText, 'text');
+        });
+
+        // Image question form submission
+        imageQuestionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const subject = document.getElementById('imageSubject').value;
+            const hasImage = imagePreview.style.display !== 'none';
+            
+            if (!subject || !hasImage) {
+                alert('Please select a subject and upload an image');
+                return;
+            }
+            
+            processQuestion(subject, 'Image-based question', 'image');
+        });
+
+        // Process question and generate AI response
+        function processQuestion(subject, question, type) {
+            // Show loading animation
+            loading.style.display = 'block';
+            aiResponse.classList.remove('empty');
+            aiResponse.innerHTML = '';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Hide loading animation
+                loading.style.display = 'none';
+                
+                // Generate AI response based on subject and question type
+                const response = generateAIResponse(subject, question, type);
+                
+                // Display the response
+                aiResponse.innerHTML = `
+                    <div class="ai-header">
+                        <div class="ai-avatar">AI</div>
+                        <div class="ai-name">StudySolutions AI</div>
+                        <div class="ai-badge">${getSubjectName(subject)} Expert</div>
+                    </div>
+                    <div class="response-content">
+                        ${response}
+                    </div>
+                `;
+                
+                // Add to recent questions
+                addToRecentQuestions(question, subject);
+            }, 2000);
+        }
+
+        // Generate AI response based on subject and question
+        function generateAIResponse(subject, question, type) {
+            const responses = {
+                math: {
+                    text: `
+                        <h4>Quadratic Equations Solution</h4>
+                        <p>Based on your question about quadratic equations, here's a detailed explanation:</p>
+                        <p>The standard form of a quadratic equation is: <strong>ax² + bx + c = 0</strong></p>
+                        <p>The quadratic formula to solve for x is:</p>
+                        <p><strong>x = [-b ± √(b² - 4ac)] / 2a</strong></p>
+                        <p><strong>Steps to solve:</strong></p>
+                        <ul>
+                            <li>Identify coefficients a, b, and c from your equation</li>
+                            <li>Calculate the discriminant: D = b² - 4ac</li>
+                            <li>If D > 0, you get two real and distinct roots</li>
+                            <li>If D = 0, you get two real and equal roots</li>
+                            <li>If D < 0, you get two complex roots</li>
+                            <li>Substitute values into the formula to find roots</li>
+                        </ul>
+                        <p><strong>Example:</strong> For equation 2x² + 5x - 3 = 0</p>
+                        <p>a = 2, b = 5, c = -3</p>
+                        <p>D = 5² - 4(2)(-3) = 25 + 24 = 49</p>
+                        <p>x = [-5 ± √49] / 4 = [-5 ± 7] / 4</p>
+                        <p>So x = (-5+7)/4 = 2/4 = 0.5 or x = (-5-7)/4 = -12/4 = -3</p>
+                    `,
+                    image: `
+                        <h4>Mathematical Problem Analysis</h4>
+                        <p>I've analyzed the mathematical problem from your image. This appears to be a calculus problem involving derivatives.</p>
+                        <p><strong>Solution Approach:</strong></p>
+                        <ul>
+                            <li>First, identify the function and the operation required</li>
+                            <li>Apply appropriate differentiation rules (power rule, chain rule, etc.)</li>
+                            <li>Simplify the expression step by step</li>
+                            <li>Verify your solution by checking if it makes sense in the original context</li>
+                        </ul>
+                        <p>Would you like me to explain any specific step in more detail?</p>
+                    `
+                },
+                physics: {
+                    text: `
+                        <h4>Newton's Laws of Motion</h4>
+                        <p>Newton's Third Law states: <strong>"For every action, there is an equal and opposite reaction."</strong></p>
+                        <p><strong>Key Points:</strong></p>
+                        <ul>
+                            <li>Forces always occur in pairs</li>
+                            <li>Action and reaction forces act on different objects</li>
+                            <li>They are equal in magnitude but opposite in direction</li>
+                            <li>They occur simultaneously</li>
+                        </ul>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>When you push against a wall, the wall pushes back with equal force</li>
+                            <li>Rocket propulsion: exhaust gases push down, rocket moves up</li>
+                            <li>Walking: your foot pushes backward, ground pushes you forward</li>
+                            <li>Swimming: you push water backward, water pushes you forward</li>
+                        </ul>
+                        <p>This law explains how objects interact with each other through forces.</p>
+                    `,
+                    image: `
+                        <h4>Physics Problem Solution</h4>
+                        <p>Based on the physics problem in your image, I can see this involves kinematics or dynamics.</p>
+                        <p><strong>Solution Strategy:</strong></p>
+                        <ul>
+                            <li>Identify the known values and what you need to find</li>
+                            <li>Select the appropriate physics formula(s)</li>
+                            <li>Substitute the values carefully, watching units</li>
+                            <li>Solve step by step, showing all work</li>
+                            <li>Include proper units in your final answer</li>
+                        </ul>
+                        <p>The key to solving physics problems is understanding the concepts behind the formulas rather than just memorizing them.</p>
+                    `
+                },
+                default: {
+                    text: `
+                        <h4>Comprehensive Answer</h4>
+                        <p>I've analyzed your question about <strong>"${question}"</strong> in ${getSubjectName(subject)}.</p>
+                        <p><strong>Key Concepts:</strong></p>
+                        <ul>
+                            <li>Understanding the fundamental principles is crucial</li>
+                            <li>Break down complex problems into smaller, manageable parts</li>
+                            <li>Practice with similar examples to build confidence</li>
+                            <li>Always verify your solution makes logical sense</li>
+                        </ul>
+                        <p>Would you like me to elaborate on any specific aspect of this topic?</p>
+                    `,
+                    image: `
+                        <h4>Academic Problem Analysis</h4>
+                        <p>I've examined the ${getSubjectName(subject)} problem from your image.</p>
+                        <p><strong>Solution Approach:</strong></p>
+                        <ul>
+                            <li>Carefully read and understand what the problem is asking</li>
+                            <li>Identify the relevant concepts and formulas</li>
+                            <li>Work through the solution step by step</li>
+                            <li>Check your answer for accuracy and completeness</li>
+                        </ul>
+                        <p>Remember to always show your work clearly, as this helps in understanding the process and identifying any mistakes.</p>
+                    `
+                }
+            };
+            
+            const subjectResponses = responses[subject] || responses.default;
+            return type === 'text' ? subjectResponses.text : subjectResponses.image;
+        }
+
+        // Helper function to get subject name
+        function getSubjectName(subjectCode) {
+            const subjects = {
+                math: 'Mathematics',
+                physics: 'Physics',
+                chemistry: 'Chemistry',
+                biology: 'Biology',
+                english: 'English',
+                computer: 'Computer Science',
+                other: 'General'
+            };
+            return subjects[subjectCode] || 'Academic';
+        }
+
+        // Add question to recent questions list
+        function addToRecentQuestions(question, subject) {
+            const questionItem = document.createElement('div');
+            questionItem.className = 'question-item';
+            
+            // Truncate long questions
+            const truncatedQuestion = question.length > 80 ? question.substring(0, 80) + '...' : question;
+            
+            questionItem.innerHTML = `
+                <div class="question-text">${truncatedQuestion}</div>
+                <div class="question-meta">
+                    <span>${getSubjectName(subject)}</span>
+                    <span>Just now</span>
+                </div>
+            `;
+            
+            // Add click event to reuse question
+            questionItem.addEventListener('click', () => {
+                document.getElementById('questionText').value = question;
+                document.getElementById('subject').value = subject;
+                
+                // Switch to text tab
+                tabs[0].click();
+            });
+            
+            // Add to the top of the list
+            questionList.insertBefore(questionItem, questionList.firstChild);
+            
+            // Limit to 5 recent questions
+            if (questionList.children.length > 5) {
+                questionList.removeChild(questionList.lastChild);
+            }
+        }
+
+        // Initialize with some sample responses for recent questions
+        document.addEventListener('DOMContentLoaded', () => {
+            // These would typically come from a database in a real application
+            const sampleQuestions = [
+                { question: "How to solve quadratic equations using the quadratic formula?", subject: "math" },
+                { question: "What is Newton's third law of motion with examples?", subject: "physics" },
+                { question: "Explain the process of photosynthesis in plants.", subject: "biology" }
+            ];
+            
+            // Clear existing sample questions
+            questionList.innerHTML = '';
+            
+            // Add sample questions
+            sampleQuestions.forEach(q => {
+                addToRecentQuestions(q.question, q.subject);
+            });
+        });
+    </script>
+</body>
+</html>
